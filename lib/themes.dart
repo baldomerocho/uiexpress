@@ -6,9 +6,19 @@ import 'package:flutter/material.dart';
 class UIEThemes{
   static ThemeData lightTheme({
     Map<TargetPlatform, PageTransitionsBuilder>? builders,
-    required Color colorSeed
+    required Color colorSeed,
+    String fontFamily = 'Roboto'
     }) => ThemeData(
     useMaterial3: true,
+    fontFamily: fontFamily,
+    fontFamilyFallback: ['NotoSans'],
+    appBarTheme: AppBarTheme(
+      titleTextStyle: TextStyle(
+        color: Colors.black,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
     colorScheme: ColorScheme.fromSeed(
       seedColor: colorSeed, brightness: Brightness.light,
     ),
@@ -54,9 +64,19 @@ class UIEThemes{
   );
   static ThemeData darkTheme({
     Map<TargetPlatform, PageTransitionsBuilder>? builders,
-    required Color colorSeed
+    required Color colorSeed,
+    String fontFamily = 'Roboto'
   }) => ThemeData(
     useMaterial3: true,
+    fontFamily: fontFamily,
+    fontFamilyFallback: ['NotoSans'],
+    appBarTheme: AppBarTheme(
+      titleTextStyle: TextStyle(
+        color: Colors.white,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
     colorScheme: ColorScheme.fromSeed(seedColor: colorSeed, brightness: Brightness.dark),
     inputDecorationTheme: InputDecorationTheme(
       border: OutlineInputBorder(
@@ -76,7 +96,7 @@ class UIEThemes{
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       elevation: 0.0,
-      foregroundColor: Colors.amber.shade900,
+      foregroundColor: colorSeed,
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
@@ -86,7 +106,7 @@ class UIEThemes{
             shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(100)))
         )
     ),
-    iconTheme: IconThemeData(color: Colors.amber.shade900),
+    iconTheme: IconThemeData(color: colorSeed),
     pageTransitionsTheme: PageTransitionsTheme(
       builders: builders ?? {
         TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
