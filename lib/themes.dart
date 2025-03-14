@@ -2,12 +2,14 @@ library uiexpress.themes;
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class UIEThemes {
   static ThemeData lightTheme(
           {Map<TargetPlatform, PageTransitionsBuilder>? builders,
           required Color colorSeed,
           Color? buttonForegroundColor,
+          Color? iconColor,
           String fontFamily = 'Roboto'}) =>
       ThemeData(
         useMaterial3: true,
@@ -43,13 +45,28 @@ class UIEThemes {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(colorSeed),
-                foregroundColor: MaterialStateProperty.all(
-                    buttonForegroundColor ?? Colors.white),
-                elevation: MaterialStateProperty.all(0),
-                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                iconColor: WidgetStateProperty.resolveWith<Color?>(
+                        (Set<WidgetState> states) {
+                      return iconColor ?? Colors.grey.shade800;
+                    }),
+                backgroundColor: WidgetStateProperty.resolveWith<Color?>(
+                        (Set<WidgetState> states) {
+                      if (states.contains(WidgetState.disabled)) {
+                        return Colors.grey.shade400; // Color del botón deshabilitado
+                      }
+                      return colorSeed;
+                    }),
+                foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+                        (Set<WidgetState> states) {
+                      if (states.contains(WidgetState.disabled)) {
+                        return Colors.grey.shade700;
+                      }
+                      return buttonForegroundColor ?? Colors.grey.shade800;
+                    }),
+                elevation: WidgetStateProperty.all(0),
+                shape: WidgetStateProperty.all(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(100))))),
-        iconTheme: IconThemeData(color: colorSeed),
+        iconTheme: IconThemeData(color: iconColor ?? Colors.grey.shade800),
         cupertinoOverrideTheme: CupertinoThemeData(
           primaryColor: colorSeed,
         ),
@@ -65,6 +82,7 @@ class UIEThemes {
           {Map<TargetPlatform, PageTransitionsBuilder>? builders,
           required Color colorSeed,
           Color? buttonForegroundColor,
+          Color? iconColor,
           String fontFamily = 'Roboto'}) =>
       ThemeData(
         useMaterial3: true,
@@ -98,13 +116,31 @@ class UIEThemes {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(colorSeed),
-                foregroundColor: MaterialStateProperty.all(
-                    buttonForegroundColor ?? Colors.white),
-                elevation: MaterialStateProperty.all(0),
-                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+          iconColor: WidgetStateProperty.resolveWith<Color?>(
+              (Set<WidgetState> states) {
+            if (states.contains(WidgetState.disabled)) {
+              return Colors.grey.shade800;
+            }
+            return iconColor ?? Colors.grey.shade800;
+          }),
+                backgroundColor: WidgetStateProperty.resolveWith<Color?>(
+                        (Set<WidgetState> states) {
+                      if (states.contains(WidgetState.disabled)) {
+                        return Colors.grey.shade800;
+                      }
+                      return colorSeed;
+                    }),
+                foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+                        (Set<WidgetState> states) {
+                      if (states.contains(WidgetState.disabled)) {
+                        return Colors.grey.shade400;
+                      }
+                      return buttonForegroundColor ?? Colors.grey.shade800;
+                    }),
+                elevation: WidgetStateProperty.all(0),
+                shape: WidgetStateProperty.all(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(100))))),
-        iconTheme: IconThemeData(color: colorSeed),
+        iconTheme: IconThemeData(color: iconColor ?? Colors.grey.shade800),
         pageTransitionsTheme: PageTransitionsTheme(
           builders: builders ??
               {
