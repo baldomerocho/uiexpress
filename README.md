@@ -1,7 +1,7 @@
 # UIExpress
 
 [![pub package](https://img.shields.io/pub/v/uiexpress.svg)](https://pub.dev/packages/uiexpress)
-[![GitHub](https://img.shields.io/github/license/baldomerocho/uiexpress)](https://github.com/baldomerocho/uiexpress/blob/main/LICENSE)
+[![GitHub](https://img.shields.io/github/license/baldomerocho/uiexpress)](https://github.com/baldomerocho/uiexpress/blob/master/LICENSE)
 
 A modern, customizable UI component library for Flutter applications by AppNodo. UIExpress provides a collection of pre-styled components and themes to help you build beautiful Flutter applications quickly.
 
