@@ -25,7 +25,7 @@ class UIEThemes {
           seedColor: colorSeed,
           brightness: Brightness.light,
         ),
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           elevation: 0.0,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
@@ -104,7 +104,7 @@ class UIEThemes {
           isDense: true,
           contentPadding: const EdgeInsets.all(16),
         ),
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           elevation: 0.0,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
